@@ -1,0 +1,5 @@
+FROM liberica-openjdk-alpine:21
+
+COPY target/tiny.jar .
+
+ENTRYPOINT ["java", "-jar", "tiny.jar"]

@@ -1,0 +1,5 @@
+FROM gcr.io/distroless/java21-debian12
+
+COPY target/tiny.jar .
+
+ENTRYPOINT ["java", "-jar", "tiny.jar"]
