@@ -1,4 +1,4 @@
-FROM liberica-openjdk-debian:21
+FROM bellsoft/liberica-openjdk-debian:21
 
 COPY target/tiny.jar .
 

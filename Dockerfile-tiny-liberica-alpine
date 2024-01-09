@@ -1,4 +1,4 @@
-FROM liberica-openjdk-alpine:21
+FROM bellsoft/liberica-openjdk-alpine:21
 
 COPY target/tiny.jar .
 
