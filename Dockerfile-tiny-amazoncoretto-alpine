@@ -1,0 +1,5 @@
+FROM java-base
+
+COPY target/tiny.jar .
+
+ENTRYPOINT ["java", "-jar", "tiny.jar"]

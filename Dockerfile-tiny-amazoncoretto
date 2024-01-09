@@ -1,0 +1,5 @@
+FROM amazoncorretto:21
+
+COPY target/tiny.jar .
+
+ENTRYPOINT ["java", "-jar", "tiny.jar"]
