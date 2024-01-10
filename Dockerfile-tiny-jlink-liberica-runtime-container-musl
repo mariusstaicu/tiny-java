@@ -1,9 +1,9 @@
-FROM maven:3-eclipse-temurin-21 as build
+FROM bellsoft/liberica-runtime-container:jdk-all-21-musl as build
 
 COPY . /app
 WORKDIR /app
 
-RUN mvn package -DskipTests
+RUN ./mvnw package -DskipTests
 
 RUN jar xf target/tiny.jar
 
@@ -26,6 +26,6 @@ FROM bellsoft/alpaquita-linux-base:stream-musl
 
 COPY --from=build /myjre /myjre
 
-COPY target/tiny.jar .
+COPY --from=build /app/target/tiny.jar .
 
 ENTRYPOINT ["/myjre/bin/java", "-jar", "tiny.jar"]
