@@ -14,7 +14,7 @@ docker build -f Dockerfile-tiny-liberica-alpine -t tiny-liberica-alpine .
 docker build -f Dockerfile-tiny-distroless -t tiny-distroless .
 docker build -f Dockerfile-tiny-liberica-runtime-container-glibc -t tiny-runtime-glibc .
 docker build -f Dockerfile-tiny-liberica-runtime-container-musl -t tiny-runtime-musl .
-docker build -f Dockerfile-tiny-jlink-distroless-java-base -t tiny-distroless-base.
+docker build -f Dockerfile-tiny-jlink-distroless-java-base -t tiny-distroless-base .
 docker build -f Dockerfile-tiny-jlink-liberica-runtime-container-glibc -t tiny-alpaquita-base-glibc .
 docker build -f Dockerfile-tiny-jlink-liberica-runtime-container-musl -t tiny-alpaquita-base-musl .
 

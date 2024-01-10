@@ -25,6 +25,7 @@ RUN jlink \
 FROM gcr.io/distroless/java-base
 
 COPY --from=build /myjre /myjre
-COPY target/tiny.jar .
+
+COPY --from=build /app/target/tiny.jar /tiny.jar
 
 ENTRYPOINT ["/myjre/bin/java", "-jar", "tiny.jar"]
