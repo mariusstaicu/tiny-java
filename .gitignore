@@ -1,2 +1,4 @@
 .idea
 target
+x86_64-linux-musl-native
+zlib-1.2.13

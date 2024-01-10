@@ -1,0 +1,7 @@
+FROM bellsoft/alpaquita-linux-base:stream-glibc
+
+ARG path=target/tiny
+
+COPY $path /tiny
+
+ENTRYPOINT ["/tiny"]

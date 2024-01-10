@@ -1,0 +1,23 @@
+FROM ubuntu:22.04
+
+RUN groupadd -g 10001 group
+RUN useradd -u 10001 -g 10001 user
+
+RUN apt update && apt-get install -y upx
+
+ARG path=target/tiny
+
+COPY $path /tiny
+
+RUN upx --lzma --best /tiny -o /tiny.upx
+
+FROM scratch
+
+COPY --from=0 /etc/group /etc/group
+COPY --from=0 /etc/passwd /etc/passwd
+COPY --from=0 --chown=user:group /tmp /tmp
+
+USER user
+
+COPY --from=0 --chown=user:group /tiny.upx /tiny.upx
+ENTRYPOINT ["/tiny.upx"]
