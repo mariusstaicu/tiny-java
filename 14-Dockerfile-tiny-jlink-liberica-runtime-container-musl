@@ -1,18 +1,15 @@
 FROM bellsoft/liberica-runtime-container:jdk-all-21-musl as build
 
-COPY . /app
-WORKDIR /app
+COPY target/tiny.jar /tiny.jar
 
-RUN ./mvnw package -DskipTests
-
-RUN jar xf target/tiny.jar
+RUN jar xf /tiny.jar
 
 RUN jdeps --ignore-missing-deps -q  \
     --recursive  \
     --multi-release 21  \
     --print-module-deps  \
     --class-path 'BOOT-INF/lib/*'  \
-    target/tiny.jar > deps.info
+    tiny.jar > deps.info
 
 RUN jlink \
     --add-modules $(cat deps.info) \
@@ -26,6 +23,6 @@ FROM bellsoft/alpaquita-linux-base:stream-musl
 
 COPY --from=build /myjre /myjre
 
-COPY --from=build /app/target/tiny.jar .
+COPY --from=build /tiny.jar /tiny.jar
 
 ENTRYPOINT ["/myjre/bin/java", "-jar", "tiny.jar"]

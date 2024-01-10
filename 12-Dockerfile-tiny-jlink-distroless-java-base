@@ -1,18 +1,15 @@
 FROM maven:3-eclipse-temurin-21 as build
 
-COPY . /app
-WORKDIR /app
+COPY target/tiny.jar /tiny.jar
 
-RUN mvn package -DskipTests
-
-RUN jar xf target/tiny.jar
+RUN jar xf /tiny.jar
 
 RUN jdeps --ignore-missing-deps -q  \
     --recursive  \
     --multi-release 21  \
     --print-module-deps  \
     --class-path 'BOOT-INF/lib/*'  \
-    target/tiny.jar > deps.info
+    tiny.jar > deps.info
 
 RUN jlink \
     --add-modules $(cat deps.info) \
@@ -26,6 +23,6 @@ FROM gcr.io/distroless/java-base
 
 COPY --from=build /myjre /myjre
 
-COPY --from=build /app/target/tiny.jar /tiny.jar
+COPY --from=build /tiny.jar /tiny.jar
 
 ENTRYPOINT ["/myjre/bin/java", "-jar", "tiny.jar"]
