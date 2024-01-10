@@ -1,0 +1,5 @@
+FROM bellsoft/liberica-runtime-container:jre-21-glibc
+
+COPY target/tiny.jar .
+
+ENTRYPOINT ["java", "-jar", "tiny.jar"]

@@ -1,0 +1,30 @@
+FROM maven:3-eclipse-temurin-21 as build
+
+COPY . /app
+WORKDIR /app
+
+RUN mvn package -DskipTests
+
+RUN jar xf target/tiny.jar
+
+RUN jdeps --ignore-missing-deps -q  \
+    --recursive  \
+    --multi-release 21  \
+    --print-module-deps  \
+    --class-path 'BOOT-INF/lib/*'  \
+    target/tiny.jar > deps.info
+
+RUN jlink \
+    --add-modules $(cat deps.info) \
+    --strip-debug \
+    --compress 2 \
+    --no-header-files \
+    --no-man-pages \
+    --output /myjre
+
+FROM gcr.io/distroless/java-base
+
+COPY --from=build /myjre /myjre
+COPY target/tiny.jar .
+
+ENTRYPOINT ["/myjre/bin/java", "-jar", "tiny.jar"]
