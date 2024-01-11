@@ -1,3 +1,8 @@
+# Tiny Java Boxes
+
+![Boxes](./images/boxes.png)
+
+
 ### Script
 
 1. start.spring.io
@@ -5,7 +10,7 @@
         - minimal web app
         - actuator
      
-2. present basic java app with 1 endpoint & actuator
+2. basic java app with 1 endpoint & actuator
 
 3. dockerize java app & dive into images
       - ubuntu
