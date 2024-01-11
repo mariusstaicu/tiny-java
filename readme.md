@@ -46,3 +46,4 @@ docker images --format "{{.ID}}\t{{.Size}}\t{{.Repository}}" | sort -k 2 -h
 
 - Are distroless containers a perfect solution ? [Article](https://bell-sw.com/blog/distroless-containers-for-security-and-size/)
 - Best linux distribution for server and cloud [Article](https://bell-sw.com/announcements/2022/06/29/linux-distributions-for-server-and-cloud-overview/)
+- Piotr's Blog - CVE comparison between alpaquita, alpine & temurin - [Article](https://piotrminkowski.com/2023/11/07/slim-docker-images-for-java/) 
