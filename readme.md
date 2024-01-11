@@ -23,7 +23,12 @@
 7. building mostly static native image
 8. building fully static native image
 9. building fully static native image with upx
-10. baam, done
+10. conclusions
+    - docker java:
+      - underlying OS -> attack surface, debugging
+      - java runtime + app classess || native executable -> CPU architecture, AOT
+    - size matters for 1 download, but for 10000s downloads maybe cache matters more
+10. QnA
 
 ### Sort docker images by size
 ```bash
