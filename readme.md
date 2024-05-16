@@ -45,12 +45,12 @@ docker images --format "{{.ID}}\t{{.Size}}\t{{.Repository}}" | sort -k 2 -h
 - openjdk, from 21 - temurin
 - glibc
 
-### Bellsoft - [Image here](https://download.bell-sw.com/static/images/how-to-choose-optimal-java-image.jpg)
+### Bellsoft - [Decision tree](https://download.bell-sw.com/static/images/how-to-choose-optimal-java-image.jpg)
 - alpine or own os - alpaquita
 - bellsoft java
 - improved musl & improved glibc
 
-[Dmitry Chuyko](https://media.licdn.com/dms/image/D5603AQG0UOJWLE95SA/profile-displayphoto-shrink_800_800/0/1678731620380?e=1710374400&v=beta&t=DMFz7UxDtQFl4UQ-vcy5QMBpmbjPCVta7dmm-dxFFOw) 
+[Dmitry Chuyko](https://twitter.com/dchuyko) - performance architect at Bellsoft
 
 ### Articles
 
